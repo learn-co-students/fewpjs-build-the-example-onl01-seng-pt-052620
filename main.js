@@ -3,9 +3,26 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+const modal = document.getElementById('modal')
+const likeButtons = document.getElementsByClassName('like-glyph')
 
 
+modal.className = "hidden"
 
+for (const heart of likeButtons) {
+  heart.addEventListener('click', () => {
+    mimicServerCall()
+    .then(()=> {
+      heart.className = "activated-heart"
+    })
+    .catch(() => {
+      modal.style.visibility = "visible"
+    })
+  })
+}
+document.addEventListener('DOMContentLoaded', function() {
+
+})
 
 //------------------------------------------------------------------------------
 // Ignore after this point. Used only for demo purposes
